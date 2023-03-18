@@ -7,9 +7,7 @@
 int main(void) {
     C_DATE date;
     C_DATE_set_date(2004, 9, 16, &date);
-
     assert(date.ms == 1095292800000);
-
-    printf("%lli PASSED\n", date.ms);
+    printf("Setting up specific date PASSED\n");
     return 0;
 }

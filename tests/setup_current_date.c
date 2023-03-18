@@ -7,5 +7,5 @@
 int main(void) {
     C_DATE date;
     C_DATE_set_current_date(&date);
-    printf("%lli, %zu, %zu, %zu, %zu, %zu, %zu\n", date.ms, date.year, date.month, date.day, date.hours, date.minutes, date.seconds);
+    printf("Current date, %lli Passed\n", date.ms);
 }

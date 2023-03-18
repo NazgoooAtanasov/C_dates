@@ -1,8 +1,9 @@
 #ifndef C_DATE_H
 #define C_DATE_H
 
-#include <stdlib.h>
+#include <stdbool.h>
 #include <time.h>
+#include <stdlib.h>
 
 typedef long long C_DATE_MS;
 
@@ -19,6 +20,8 @@ typedef struct _c_date_str {
 void C_DATE_set_date(size_t y, size_t m, size_t d, C_DATE* date);
 void C_DATE_set_full_date(size_t y, size_t m, size_t d, size_t h, size_t min, size_t s, C_DATE* date);
 void C_DATE_set_current_date(C_DATE* date);
+void C_DATE_set_epoch_date(C_DATE* date);
+bool C_DATE_cmp_dates(const C_DATE* d1, const C_DATE* d2);
 
 #ifdef C_DATE_IMPL
 
@@ -54,6 +57,9 @@ void C_DATE_set_date(size_t y, size_t m, size_t d, C_DATE* date) {
     date->year = y;
     date->month = m;
     date->day = d;
+    date->hours = 0;
+    date->minutes = 0;
+    date->seconds = 0;
 }
 
 void C_DATE_set_full_date(size_t y, size_t m, size_t d, size_t h, size_t min, size_t s, C_DATE* date) {
@@ -109,6 +115,18 @@ void C_DATE_set_current_date(C_DATE* date) {
     date->seconds = current_year_current_day_diff_sec;
 }
 
-#endif
+void C_DATE_set_epoch_date(C_DATE* date) {
+    date->year = 1970;
+    date->month = 1;
+    date->day = 1;
+    date->hours = 0;
+    date->minutes = 0;
+    date->seconds = 0;
+    date->ms = 0;
+}
 
+bool C_DATE_cmp_dates(const C_DATE* d1, const C_DATE* d2) {
+    return d1->ms > d2->ms;
+}
+#endif
 #endif
