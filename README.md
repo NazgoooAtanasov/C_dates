@@ -30,3 +30,10 @@ C_DATE date;
 C_DATE_set_full_date(2004, 9, 16, 10, 19, 0, &date);
 ```
 The date instance will get modified with the passed parameters, plus the milliseconds will be calculated.
+
+#### Fill `C_DATE` instance with current date information
+```c
+C_DATE date;
+C_DATE_set_current_date(&date);
+```
+The instance will be modified to represent the current date and time. It uses the `<time.h>` header just to fetch current date in seconds. Everything else is calculated on the fly.

@@ -2,11 +2,13 @@
 TEST_SRC=(
     "tests/setup_date.c"
     "tests/setup_full_date.c"
+    "tests/setup_current_date.c"
     )
 
 TEST_EXEC=(
     "tests/build/setup_date"
     "tests/build/setup_full_date"
+    "tests/build/setup_current_date"
     )
 
 
